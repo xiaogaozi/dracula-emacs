@@ -199,7 +199,11 @@ read it before opening a new issue about your will.")
                (error :foreground ,dracula-red)
                (ffap :foreground ,fg4)
                (fringe :background ,dracula-bg :foreground ,fg4)
-               (header-line :inherit 'mode-line)
+               ;; Refer to https://github.com/dracula/emacs/issues/95
+               (header-line :background ,dracula-current
+                            ,@(if dracula-alternate-mode-line-and-minibuffer
+                                  (list :foreground fg3)
+                                (list :foreground dracula-fg)))
                (highlight :foreground ,fg3 :background ,dracula-current)
                (hl-line :background ,bg2 :extend t)
                (info-quoted-name :foreground ,dracula-orange)
